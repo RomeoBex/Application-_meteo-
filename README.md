@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="background.css">
 </head>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
