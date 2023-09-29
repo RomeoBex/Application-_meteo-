@@ -2,7 +2,7 @@ body {
     
     background-image: url('sky-blue.jpg');
     background-size: cover; /* Pour ajuster la taille de l'image au conteneur */
-    .titre-application {
+    .titre-doc-python {
     color: black;
 }
 
