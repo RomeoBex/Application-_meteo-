@@ -86,7 +86,7 @@ if response.status_code == 200:
     # Ajuster la mise en forme du tableau
     tableau.auto_set_font_size(True)
     tableau.set_fontsize(20)
-    tableau.scale(2, 2)
+    tableau.scale(1.75, 2)
 
     # Personnalisez la couleur du texte dans les cellules du tableau
     for i, key in enumerate(table_data):
@@ -119,7 +119,7 @@ if response.status_code == 200:
     </head>
     <body>
     <h1>Tableau Météo</h1>
-    <img src="data:image/png;base64, {base64_image}" alt="Tableau Météo">
+    <img src="data:image/png;base64, {base64_image}" alt="Tableau Meteo">
     </body>
     </html>
     '''
