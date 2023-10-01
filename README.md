@@ -19,7 +19,7 @@
     <main>
         
         <!-- Inclusion d'une iframe sans barre de défilement horizontal --> 
-        <iframe src="tableau.html" width="1000%" height="250" frameborder="0"></iframe>
+        <iframe src="tableau.html" width="1000%" height="280" frameborder="0"></iframe>
         <!-- Vous pouvez ajuster la largeur, la hauteur et d'autres styles ici -->
     </main>
 
