@@ -129,4 +129,3 @@ if response.status_code == 200:
 else:
     print("La requête à l'API a échoué.")
 
-2+2
