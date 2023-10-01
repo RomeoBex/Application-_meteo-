@@ -106,8 +106,28 @@ if response.status_code == 200:
     ax.axis('off')
 
 
-    # Affiche le tableau
-    plt.show()
+
+
+# Crée une page HTML pour afficher l'image
+
+html_content = f'''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau Météo</title>
+</head>
+<body>
+    <h1>Tableau Météo</h1>
+    <img src="data:image/png;base64, {fig.canvas.to_base64_encoded()}" alt="Tableau Météo">
+</body>
+</html>
+'''
+
+# Enregistre la page HTML
+with open('tableau.html', 'w') as html_file:
+    html_file.write(html_content)
+
 
 else:
     print("La requête à l'API a échoué.")
+ 
