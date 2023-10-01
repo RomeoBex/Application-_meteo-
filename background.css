@@ -33,7 +33,7 @@ main {
 
 #table-container {
     max-width: 80%;
-    max-height: 500px;
+    max-height: 400px;
     overflow-x: auto; /* Ajoute une barre de défilement horizontal si nécessaire */
     margin: 0 auto; /* Centre le tableau horizontalement */
 }
