@@ -63,7 +63,7 @@ if response.status_code == 200:
     colors = plt.cm.BuPu(np.linspace(0, 0.5, len(l2)))
     colors = np.append(colors, [0])
 
-    for day, moy_temp, temp_max_jour, temp_min_jour, force_vent, direction_vent, in zip(
+    for day, moy_temp, temp_max_jour, temp_min_jour, force_vent, direction_vent in zip(
             l2, moyennes_temperatures, temp_max, temp_min, vent_force, vent_direction):
         moy_temp_formatted = f"{moy_temp:.1f}"  # Formatage de la moyenne avec un chiffre après la virgule
         temp_max_formatted = f"{temp_max_jour:.1f}"
@@ -101,15 +101,16 @@ if response.status_code == 200:
 
     # Remplacez '/chemin/vers/votre/repertoire' par le chemin d'enregistrement souhaité
     chemin_d_enregistrement = 'C:/Users/romeo/Documents/Infos/doc_python/tableau_meteo.png'
-
-    # Enregistrez l'image à l'emplacement spécifié
+    chemin_d_enregistrement2 = 'C:/Users/romeo/Documents/Infos/doc_python/tableau.html'
+    
+    # Enregistrez l'image au format PNG
     fig.savefig(chemin_d_enregistrement)
-
+    
     # Convertissez l'image en base64
     with open(chemin_d_enregistrement, "rb") as image_file:
         base64_image = base64.b64encode(image_file.read()).decode()
 
-    # Enregistrez également la page HTML
+    # Créez le contenu HTML en incorporant l'image base64
     html_content = f'''
     <!DOCTYPE html>
     <html>
@@ -123,9 +124,9 @@ if response.status_code == 200:
     </html>
     '''
 
-    with open('tableau.html', 'w') as html_file:
+    # Enregistrez le contenu HTML dans le fichier HTML
+    with open(chemin_d_enregistrement2, 'w') as html_file:
         html_file.write(html_content)
 
 else:
     print("La requête à l'API a échoué.")
-
