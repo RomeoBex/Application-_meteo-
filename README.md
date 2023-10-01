@@ -25,7 +25,7 @@
 
     <!-- Pied de page de la page -->
     <footer>
-        <p>&copy; 2023 Roméo BEX</p>
+        <p>&copy; 2023 Roméo BEX <br>Données metéorologiques : open-meteo.com </p>
     </footer>
 </body>
 </html>
