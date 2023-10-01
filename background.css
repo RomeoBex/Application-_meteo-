@@ -30,10 +30,21 @@ main {
     padding: 20px;
 }
 
+
+#table-container {
+    max-width: 80%;
+    max-height: 500px;
+    overflow-x: auto; /* Ajoute une barre de défilement horizontal si nécessaire */
+    margin: 0 auto; /* Centre le tableau horizontalement */
+}
+
+
+
+
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #3498db;
+    background-color: #34c8db;
     color: #fff;
 }
 
