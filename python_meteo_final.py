@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import datetime
 import requests
 import json
+import io
+import base64
 
 # Obtenez la date actuelle
 date_actuelle = datetime.datetime.now()
@@ -53,15 +55,11 @@ if response.status_code == 200:
     temp_max = [max(temperatures[jour * 24:(jour + 1) * 24]) for jour in range(jours)]
     temp_min = [min(temperatures[jour * 24:(jour + 1) * 24]) for jour in range(jours)]
 
-   
-
     # Créez un tableau
     fig, ax = plt.subplots()
     table_data = []
 
-    
-    #Définit une palette de couleur 
-
+    # Définit une palette de couleur
     colors = plt.cm.BuPu(np.linspace(0, 0.5, len(l2)))
     colors = np.append(colors, [0])
 
@@ -76,18 +74,14 @@ if response.status_code == 200:
             [day, moy_temp_formatted, temp_max_formatted, temp_min_formatted, force_vent_formatted,
              direction_vent_formatted])
 
-    
-
-
     # Transpose la liste pour avoir les jours en tant que colonnes
     table_data = list(map(list, zip(*table_data)))
 
-    tableau = ax.table(cellText=table_data, cellLoc='center', loc='center', cellColours=[['#f0f0f0'] * len(l2)] * len(table_data))
-    
-     #Couleur de fond 
-    fig.patch.set_facecolor('#87CEEB')
+    tableau = ax.table(cellText=table_data, cellLoc='center', loc='center',
+                       cellColours=[['#f0f0f0'] * len(l2)] * len(table_data))
 
-  
+    # Couleur de fond
+    fig.patch.set_facecolor('#87CEEB')
 
     # Ajuster la mise en forme du tableau
     tableau.auto_set_font_size(True)
@@ -105,29 +99,34 @@ if response.status_code == 200:
     # Masque les axes du graphique
     ax.axis('off')
 
+    # Remplacez '/chemin/vers/votre/repertoire' par le chemin d'enregistrement souhaité
+    chemin_d_enregistrement = 'C:/Users/romeo/Documents/Infos/doc_python/tableau_meteo.png'
 
+    # Enregistrez l'image à l'emplacement spécifié
+    fig.savefig(chemin_d_enregistrement)
 
+    # Convertissez l'image en base64
+    with open(chemin_d_enregistrement, "rb") as image_file:
+        base64_image = base64.b64encode(image_file.read()).decode()
 
-# Crée une page HTML pour afficher l'image
-
-html_content = f'''
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tableau Météo</title>
-</head>
-<body>
+    # Enregistrez également la page HTML
+    html_content = f'''
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Tableau Météo</title>
+    </head>
+    <body>
     <h1>Tableau Météo</h1>
-    <img src="data:image/png;base64, {fig.canvas.to_base64_encoded()}" alt="Tableau Météo">
-</body>
-</html>
-'''
+    <img src="data:image/png;base64, {base64_image}" alt="Tableau Météo">
+    </body>
+    </html>
+    '''
 
-# Enregistre la page HTML
-with open('tableau.html', 'w') as html_file:
-    html_file.write(html_content)
-
+    with open('tableau.html', 'w') as html_file:
+        html_file.write(html_content)
 
 else:
     print("La requête à l'API a échoué.")
- 
+
+2+2
