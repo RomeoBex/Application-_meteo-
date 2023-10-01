@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,7 +36,7 @@
 
         iframe {
             width: 100%;
-            height: 700px; /* Hauteur définie à 500 pixels pour votre tableau */
+            height: 850px; /* Hauteur définie à 500 pixels pour votre tableau */
             border: none; /* Supprime la bordure de l'iframe */
         }
 
