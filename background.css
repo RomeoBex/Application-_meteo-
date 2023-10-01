@@ -43,7 +43,8 @@ main {
 
 footer {
     text-align: fixed;
-    padding: -15px;
+    margin-top: 15px;
+    padding: 10px;
     background-color: #34c8db;
     color: #fff;
 }
