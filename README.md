@@ -36,7 +36,7 @@
 
         iframe {
             width: 100%;
-            height: 850px; /* Hauteur définie à 500 pixels pour votre tableau */
+            height: 800px; /* Hauteur définie à 500 pixels pour votre tableau */
             border: none; /* Supprime la bordure de l'iframe */
         }
 
