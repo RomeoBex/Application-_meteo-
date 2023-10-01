@@ -115,10 +115,10 @@ if response.status_code == 200:
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Tableau Météo</title>
+        <title>Tableau Meteo</title>
     </head>
     <body>
-    <h1>Tableau Météo</h1>
+    <h1>Tableau Meteo</h1>
     <img src="data:image/png;base64, {base64_image}" alt="Tableau Meteo">
     </body>
     </html>

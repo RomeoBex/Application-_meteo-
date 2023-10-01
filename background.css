@@ -43,7 +43,7 @@ main {
 
 footer {
     position: fixed;
-    margin-top: 20px; /* Augmentez cette valeur pour déplacer le pied de page plus bas */
+    margin-top: 25px; /* Augmentez cette valeur pour déplacer le pied de page plus bas */
     left: 0;
     right: 0;
     background-color: #66b3e0;
