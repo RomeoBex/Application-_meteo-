@@ -1,7 +1,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajoutez la balise meta viewport ici -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Application Météo</title>
     <!-- Inclusion des fichiers CSS externes -->
     <link rel="stylesheet" type="text/css" href="background.css">
