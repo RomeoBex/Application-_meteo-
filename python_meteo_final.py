@@ -83,7 +83,7 @@ if response.status_code == 200:
     # Couleur de fond
     fig.patch.set_facecolor('#87CEEB')
 
-    # Ajuster la mise en forme du tableau
+    # Ajuster la mise en forme du tableau 
     tableau.auto_set_font_size(True)
     tableau.set_fontsize(20)
     tableau.scale(1.75, 2)
