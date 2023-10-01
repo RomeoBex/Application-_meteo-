@@ -16,7 +16,7 @@
     <main>
         <!-- Contenu principal de votre application ici -->
         <h2>Tableau Météo</h2>
-        <iframe src="tableau.html" width="100%" height="300" frameborder="0"></iframe>
+        <iframe src="tableau.html" width="80%" height="300" frameborder="0"></iframe>
     </main>
 
     <footer>
