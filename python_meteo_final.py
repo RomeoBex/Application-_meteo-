@@ -56,7 +56,7 @@ if response.status_code == 200:
     temp_min = [min(temperatures[jour * 24:(jour + 1) * 24]) for jour in range(jours)]
 
     # Créez un tableau
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(17, 12))  # Définissez les dimensions de la figure ici
     table_data = []
 
     # Définit une palette de couleur
@@ -104,7 +104,7 @@ if response.status_code == 200:
     chemin_d_enregistrement2 = 'C:/Users/romeo/Documents/Infos/doc_python/tableau.html'
     
     # Enregistrez l'image au format PNG
-    fig.savefig(chemin_d_enregistrement)
+    fig.savefig(chemin_d_enregistrement, bbox_inches='tight', dpi=300)  # Augmentez dpi pour une meilleure résolution
     
     # Convertissez l'image en base64
     with open(chemin_d_enregistrement, "rb") as image_file:
