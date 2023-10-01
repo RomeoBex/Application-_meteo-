@@ -42,7 +42,7 @@ main {
 
 
 footer {
-    text-align: center;
+    text-align: fixed;
     padding: 15px;
     background-color: #34c8db;
     color: #fff;
