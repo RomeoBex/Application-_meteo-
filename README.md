@@ -23,7 +23,7 @@
         <!-- Vous pouvez ajuster la largeur, la hauteur et d'autres styles ici -->
     </main>
 
-    <!-- Pied de page de la page -->
+    <!-- Pied de page de la page --> 
     <footer>
         <p>&copy; 2023 Roméo BEX <br>Données metéorologiques : open-meteo.com </p>
     </footer>
