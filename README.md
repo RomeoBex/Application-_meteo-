@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau Météo</title>
+</head>
+<body>
+    <h1>Tableau Météo</h1>
+    <iframe src="https://raw.githubusercontent.com/RomeoBex/Application-_meteo-/master/tableau.html"></iframe>
+</body>
+</html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="background.css">
 </head>
