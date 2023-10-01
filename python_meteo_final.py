@@ -56,7 +56,7 @@ if response.status_code == 200:
     temp_min = [min(temperatures[jour * 24:(jour + 1) * 24]) for jour in range(jours)]
 
     # Créez un tableau
-    fig, ax = plt.subplots(figsize=(9, 1))  # Définissez les dimensions de la figure ici
+    fig, ax = plt.subplots(figsize=(1.5, 1.5))  # Définissez les dimensions de la figure ici
     table_data = []
 
     # Définit une palette de couleur
@@ -86,7 +86,7 @@ if response.status_code == 200:
     # Ajuster la mise en forme du tableau
     tableau.auto_set_font_size(True)
     tableau.set_fontsize(20)
-    tableau.scale(2, 4)
+    tableau.scale(2.5, 2.5)
 
     # Personnalisez la couleur du texte dans les cellules du tableau
     for i, key in enumerate(table_data):
