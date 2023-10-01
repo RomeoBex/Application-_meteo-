@@ -25,7 +25,7 @@
 
     <!-- Pied de page de la page -->
     <footer>
-        <p>&copy; 2023 Application Météo</p>
+        <p>&copy; 2023 Roméo BEX</p>
     </footer>
 </body>
 </html>
