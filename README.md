@@ -1,24 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Tableau Météo</title>
-</head>
-<body>
-    <h1>Tableau Météo</h1>
-    <iframe src="https://raw.githubusercontent.com/RomeoBex/Application-_meteo-/master/tableau.html"></iframe>
-</body>
-</html>
-
-<head>
-    <link rel="stylesheet" type="text/css" href="background.css">
-</head>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Application Météo</title>
+    <link rel="stylesheet" type="text/css" href="background.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -28,6 +15,8 @@
 
     <main>
         <!-- Contenu principal de votre application ici -->
+        <h2>Tableau Météo</h2>
+        <iframe src="tableau.html" width="100%" height="500" frameborder="0"></iframe>
     </main>
 
     <footer>
