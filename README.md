@@ -11,7 +11,6 @@
 <body>
     <!-- En-tête de la page -->
     <header> 
-        <h1>Application Météo</h1>
         <p> Voici les prévisions météorologiques des 5 prochains jours à Montpellier 
         </p>
     </header>
