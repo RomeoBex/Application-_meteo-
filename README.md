@@ -18,9 +18,9 @@
     <!-- Contenu principal de la page -->
     <main>
         <h2>Tableau Météo</h2>
-        <!-- Inclusion d'une iframe pour afficher un tableau météo -->
-        <iframe src="tableau.html" width="100%" height="9000" frameborder="0"></iframe>
-        <!-- Vous pouvez ajuster la largeur et la hauteur selon vos besoins -->
+        <!-- Inclusion d'une iframe avec overflow-x: auto; pour la barre de défilement horizontal -->
+        <iframe src="tableau.html" width="100%" height="1000" frameborder="0" style="overflow-x: auto;"></iframe>
+        <!-- Vous pouvez ajuster la largeur, la hauteur et d'autres styles ici -->
     </main>
 
     <!-- Pied de page de la page -->
