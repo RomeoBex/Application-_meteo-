@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- En-tête de la page -->
-    <header>
+    <header> 
         <h1>Application Météo</h1>
         <p>Obtenez les prévisions météorologiques pour votre emplacement.</p>
     </header>
