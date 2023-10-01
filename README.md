@@ -19,7 +19,7 @@
     <main>
         <h2>Tableau Météo</h2>
         <!-- Inclusion d'une iframe pour afficher un tableau météo -->
-        <iframe src="tableau.html" width="80%" height="100" frameborder="0"></iframe>
+        <iframe src="tableau.html" width="200%" height="300" frameborder="0"></iframe>
     </main>
 
     <!-- Pied de page de la page -->
