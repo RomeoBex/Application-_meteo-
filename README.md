@@ -19,7 +19,7 @@
     <main>
         <h2>Tableau Météo</h2>
         <!-- Inclusion d'une iframe sans barre de défilement horizontal --> 
-        <iframe src="tableau.html" width="170%" height="400" frameborder="0"></iframe>
+        <iframe src="tableau.html" width="150%" height="200" frameborder="0"></iframe>
         <!-- Vous pouvez ajuster la largeur, la hauteur et d'autres styles ici -->
     </main>
 
