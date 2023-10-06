@@ -126,7 +126,7 @@ if response.status_code == 200:
     <img src="data:image/png;base64, {base64_image}" alt="Tableau Meteo">
     </body>
     </html>
-    '''
+    ''' 
 
     # Enregistrez le contenu HTML dans le fichier HTML
     with open(chemin_d_enregistrement2, 'w') as html_file:
