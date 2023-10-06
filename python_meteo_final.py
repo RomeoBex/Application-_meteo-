@@ -60,7 +60,7 @@ if response.status_code == 200:
     table_data = []
 
     # Ajoutez la colonne "Caractéristique"
-    caracteristique = ["Caractéristique"] + l2
+    caracteristique = ["Caractéristique météo","Température Moyenne","Température Maximale","Température Minimale","Force du vent (km/h)","Direction du vent"]
     table_data.append(caracteristique)
 
     # Définit une palette de couleur
