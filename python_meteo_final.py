@@ -56,11 +56,11 @@ if response.status_code == 200:
     temp_min = [min(temperatures[jour * 24:(jour + 1) * 24]) for jour in range(jours)]
 
     # Créez un tableau
-    fig, ax = plt.subplots(figsize=(10, 6))  # Définissez les dimensions de la figure ici
+    fig, ax = plt.subplots(figsize=(11, 0.5))  # Définissez les dimensions de la figure ici
     table_data = []
 
     # Ajoutez la colonne "Caractéristique"
-    caracteristique = ["Caractéristique météo","Température Moyenne","Température Maximale","Température Minimale","Force du vent (km/h)","Direction du vent"]
+    caracteristique = ["Caractéristiques météo","Température Moyenne","Température Maximale","Température Minimale","Force du vent (km/h)","Direction du vent"]
     table_data.append(caracteristique)
 
     for day, moy_temp, temp_max_jour, temp_min_jour, force_vent, direction_vent in zip(
