@@ -56,16 +56,12 @@ if response.status_code == 200:
     temp_min = [min(temperatures[jour * 24:(jour + 1) * 24]) for jour in range(jours)]
 
     # Créez un tableau
-    fig, ax = plt.subplots(figsize=(1.5, 1.5))  # Définissez les dimensions de la figure ici
+    fig, ax = plt.subplots(figsize=(10, 6))  # Définissez les dimensions de la figure ici
     table_data = []
 
     # Ajoutez la colonne "Caractéristique"
     caracteristique = ["Caractéristique météo","Température Moyenne","Température Maximale","Température Minimale","Force du vent (km/h)","Direction du vent"]
     table_data.append(caracteristique)
-
-    # Définit une palette de couleur
-    colors = plt.cm.BuPu(np.linspace(0, 0.5, len(l2)))
-    colors = np.append(colors, [0])
 
     for day, moy_temp, temp_max_jour, temp_min_jour, force_vent, direction_vent in zip(
             l2, moyennes_temperatures, temp_max, temp_min, vent_force, vent_direction):
@@ -82,15 +78,16 @@ if response.status_code == 200:
     table_data = list(map(list, zip(*table_data)))
 
     tableau = ax.table(cellText=table_data, cellLoc='center', loc='center',
-                       cellColours=[['#f0f0f0'] * (len(l2) + 1)] * len(table_data))
+                       cellColours=[['#f0f0f0'] * 6] * len(table_data))
 
     # Couleur de fond
     fig.patch.set_facecolor('#87CEEB')
 
     # Ajuster la mise en forme du tableau
-    tableau.auto_set_font_size(True)
-    tableau.set_fontsize(20)
-    tableau.scale(1.75, 2)
+    tableau.auto_set_font_size(False)
+    tableau.set_fontsize(12)  # Taille de la police
+
+    # Personnalisez la
 
     # Personnalisez la couleur du texte dans les cellules du tableau
     for i, key in enumerate(table_data):
