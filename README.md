@@ -1,7 +1,7 @@
 <html lang="en">  
 <head>
     <meta charset="UTF-8">
-    <!-- Ajoutez la balise meta viewport ici -->
+    <!-- Ajoutez la balise meta viewport ici --> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Votre Titre</title>
     <!-- Inclusion des fichiers CSS externes -->

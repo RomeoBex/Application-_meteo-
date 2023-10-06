@@ -87,7 +87,7 @@ if response.status_code == 200:
     tableau.auto_set_font_size(False)
     tableau.set_fontsize(7.5)  # Taille de la police
 
-    # Personnalisez la
+    
 
     # Personnalisez la couleur du texte dans les cellules du tableau
     for i, key in enumerate(table_data):
