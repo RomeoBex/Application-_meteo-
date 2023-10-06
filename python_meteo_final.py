@@ -85,7 +85,7 @@ if response.status_code == 200:
 
     # Ajuster la mise en forme du tableau
     tableau.auto_set_font_size(False)
-    tableau.set_fontsize(12)  # Taille de la police
+    tableau.set_fontsize(7.5)  # Taille de la police
 
     # Personnalisez la
 
