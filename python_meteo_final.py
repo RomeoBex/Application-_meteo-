@@ -6,7 +6,7 @@ import json
 import io
 import base64
 
-# Obtenez la date actuelle 
+# Obtenez la date actuelle
 date_actuelle = datetime.datetime.now()
 jour_actuel = date_actuelle.strftime("%A")
 
@@ -16,7 +16,7 @@ l2 = []
 if jour_actuel == 'Monday':
     l2 = [l[0], l[1], l[2], l[3], l[4]]
 elif jour_actuel == 'Tuesday':
-    l2 = [l[1], l[2], l[3], l[4], l[5]] 
+    l2 = [l[1], l[2], l[3], l[4], l[5]]
 elif jour_actuel == 'Wednesday':
     l2 = [l[2], l[3], l[4], l[5], l[6]]
 elif jour_actuel == 'Thursday':
@@ -59,6 +59,10 @@ if response.status_code == 200:
     fig, ax = plt.subplots(figsize=(1.5, 1.5))  # Définissez les dimensions de la figure ici
     table_data = []
 
+    # Ajoutez la colonne "Caractéristique"
+    caracteristique = ["Caractéristique"] + l2
+    table_data.append(caracteristique)
+
     # Définit une palette de couleur
     colors = plt.cm.BuPu(np.linspace(0, 0.5, len(l2)))
     colors = np.append(colors, [0])
@@ -78,12 +82,12 @@ if response.status_code == 200:
     table_data = list(map(list, zip(*table_data)))
 
     tableau = ax.table(cellText=table_data, cellLoc='center', loc='center',
-                       cellColours=[['#f0f0f0'] * len(l2)] * len(table_data))
+                       cellColours=[['#f0f0f0'] * (len(l2) + 1)] * len(table_data))
 
     # Couleur de fond
     fig.patch.set_facecolor('#87CEEB')
 
-    # Ajuster la mise en forme du tableau 
+    # Ajuster la mise en forme du tableau
     tableau.auto_set_font_size(True)
     tableau.set_fontsize(20)
     tableau.scale(1.75, 2)
@@ -102,10 +106,10 @@ if response.status_code == 200:
     # Remplacez '/chemin/vers/votre/repertoire' par le chemin d'enregistrement souhaité
     chemin_d_enregistrement = 'C:/Users/romeo/Documents/Infos/doc_python/tableau_meteo.png'
     chemin_d_enregistrement2 = 'C:/Users/romeo/Documents/Infos/doc_python/tableau.html'
-    
+
     # Enregistrez l'image au format PNG
     fig.savefig(chemin_d_enregistrement, bbox_inches='tight', dpi=300)  # Augmentez dpi pour une meilleure résolution
-    
+
     # Convertissez l'image en base64
     with open(chemin_d_enregistrement, "rb") as image_file:
         base64_image = base64.b64encode(image_file.read()).decode()
