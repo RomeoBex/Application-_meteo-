@@ -74,6 +74,9 @@ if response.status_code == 200:
             [day, moy_temp_formatted, temp_max_formatted, temp_min_formatted, force_vent_formatted,
              direction_vent_formatted])
 
+        
+
+    
     # Transpose la liste pour avoir les jours en tant que colonnes
     table_data = list(map(list, zip(*table_data)))
 
@@ -99,6 +102,11 @@ if response.status_code == 200:
 
     # Masque les axes du graphique
     ax.axis('off')
+    
+    
+    
+    
+    
 
     # Remplacez '/chemin/vers/votre/repertoire' par le chemin d'enregistrement souhaité
     chemin_d_enregistrement = 'C:/Users/romeo/Documents/Infos/doc_python/tableau_meteo.png'
@@ -131,3 +139,4 @@ if response.status_code == 200:
 
 else:
     print("La requête à l'API a échoué.")
+
