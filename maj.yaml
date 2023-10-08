@@ -15,10 +15,10 @@ jobs:
     - name: Installer Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.x # Utilisez la version de Python appropriée
+        python-version: 3.6
 
     - name: Exécuter le script Python
-      run: python python_meteo_final.py # Remplacez par le nom de votre script Python
+      run: python python_meteo_final.py 
 
     - name: Commit et pousser les modifications
       run: |
