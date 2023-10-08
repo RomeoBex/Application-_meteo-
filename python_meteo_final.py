@@ -13,7 +13,7 @@ jour_actuel = date_actuelle.strftime("%A")
 l = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 l2 = []
  
-if jour_actuel == 'Monday':
+if jour_actuel == 'Monday': 
     l2 = [l[0], l[1], l[2], l[3], l[4]]
 elif jour_actuel == 'Tuesday':
     l2 = [l[1], l[2], l[3], l[4], l[5]]
@@ -105,8 +105,7 @@ if response.status_code == 200:
     
     
     
-    
-    
+
 
     # Remplacez '/chemin/vers/votre/repertoire' par le chemin d'enregistrement souhaité
     chemin_d_enregistrement = 'C:/Users/romeo/Documents/Infos/doc_python/tableau_meteo.png'

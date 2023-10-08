@@ -145,4 +145,4 @@ if response.status_code == 200:
         html_file.write(html_content)
 
 else:
-    print("La requête à l'API a échoué.")
+    print("La requête à l'API a échoué.") 
