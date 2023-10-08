@@ -7,7 +7,7 @@
     <!-- Inclusion des fichiers CSS externes -->
     <link rel="stylesheet" type="text/css" href="background.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
+    <style> 
         body {    
             background-image: url('sky-blue.jpg');
             background-size: cover;
