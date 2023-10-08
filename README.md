@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="background.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        body {   
+        body {    
             background-image: url('sky-blue.jpg');
             background-size: cover;
             font-family: Arial, sans-serif;
