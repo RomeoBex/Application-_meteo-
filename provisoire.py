@@ -6,6 +6,13 @@ import json
 import io
 import base64
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+from PIL import Image
+import emoji 
+
+
+
+
+
 
 # Obtenez la date actuelle
 date_actuelle = datetime.datetime.now()
@@ -76,11 +83,9 @@ if response.status_code == 200:
         if moy_temp >= 25:
             sun_icon = ""
         elif moy_temp >= 20:
-            sun_icon = "C:\Users\romeo\Documents\Infos\doc_python\soleil.soleil.png" 
-        elif moy_temp >= 15:
-            sun_icon = "s"
+            sun_icon = 's'
         else:
-            sun_icon = "a"
+            sun_icon = "im"
 
         table_data.append(
             [day, f"{moy_temp_formatted} {sun_icon}", temp_max_formatted, temp_min_formatted, force_vent_formatted,
