@@ -2,7 +2,7 @@ name: Mise à jour du tableau météo
 
 on:
   schedule:
-    - cron: '10 9 * * *' # Exécuter tous les jours à minuit UTC (ajustez le fuseau horaire selon vos besoins)
+    - cron: '27 9 * * *' # Exécuter tous les jours à minuit UTC (ajustez le fuseau horaire selon vos besoins)
 
 jobs:
   update_weather:
@@ -15,7 +15,7 @@ jobs:
     - name: Installer Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.6
+        python-version: 3.9.13
 
     - name: Exécuter le script Python
       run: python python_meteo_final.py 
