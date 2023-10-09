@@ -2,7 +2,7 @@ name: Mise à jour du tableau météo
 
 on:
   schedule:
-    - cron: '33 17 * * *' # Exécuter tous les jours à minuit UTC (ajustez le fuseau horaire selon vos besoins)
+    - cron: '10 9 * * *' # Exécuter tous les jours à minuit UTC (ajustez le fuseau horaire selon vos besoins)
 
 jobs:
   update_weather:
