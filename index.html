@@ -6,7 +6,8 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f0f0f0;
+            background-image: url('sky-blue.png');
+            background-size: cover;
         }
 
         h1 {
@@ -14,7 +15,17 @@
         }
 
         .weather-info {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .weather-day {
+            background-color: rgba(255, 255, 255, 0.9);
             border: 2px solid #333;
             border-radius: 10px;
             padding: 20px;
@@ -35,7 +46,8 @@
 </head>
 <body>
     <h1>Données de la Station Météo</h1>
-    <div class="weather-info">
+    <div class="weather-day">
+        <h2>Lundi</h2>
         <p><strong>Température:</strong> 25°C</p>
         <p><strong>Humidité:</strong> 60%</p>
         <p><strong>Pression Atmosphérique:</strong> 1013 hPa</p>
@@ -44,5 +56,6 @@
         <p><strong>Précipitations:</strong> 0 mm</p>
         <p><strong>Conditions Météo:</strong> Ensoleillé</p>
     </div>
+    <!-- Répétez le div ci-dessus pour chaque jour de la semaine -->
 </body>
 </html>
