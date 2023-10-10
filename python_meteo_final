@@ -6,6 +6,7 @@ import json
 import io
 import base64
 
+
 # Obtenez la date actuelle
 date_actuelle = datetime.datetime.now()
 jour_actuel = date_actuelle.strftime("%A")
