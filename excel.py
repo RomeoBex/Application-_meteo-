@@ -139,3 +139,44 @@ if response.status_code == 200:
 else:
     print("La requête à l'API a échoué.")
 
+#%%
+
+type(temperatures)
+len(temperatures)
+
+A1=0
+A2=0
+A3=0
+A4=0
+
+for i in range (0,25):
+    A1=A1+temperatures[i]
+
+A1=A1/24
+print(f"{A1:.1f}")
+
+for i in range (25,50):
+    A2=A2+temperatures[i]
+
+A2=A2/24
+print(f"{A2:.1f}")
+
+
+for i in range(50,75):
+    A3=A3+temperatures[i]
+
+A3=A3/24
+print(f"{A3:.1f}")
+
+for i in range (75,100):
+    A4=A4+temperatures[i]
+
+A4=A4/24
+print(f"{A4:.1f}")
+
+for i in range(100,12):
+    A5=A5+temperatures[i]
+
+
+
+# %%
