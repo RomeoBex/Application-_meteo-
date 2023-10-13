@@ -7,7 +7,7 @@ import io
 import base64 
 
 # Obtenez la date actuelle
-date_actuelle = datetime.datetime.now()
+date_actuelle = datetime.datetime.now() 
 jour_actuel = date_actuelle.strftime("%A")
 
 l = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
