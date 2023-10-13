@@ -22,7 +22,7 @@ elif jour_actuel == 'Wednesday':
 elif jour_actuel == 'Thursday':
     l2 = [l[3], l[4], l[5], l[6], l[0]]
 elif jour_actuel == 'Friday':
-    l2 = [l[4], l[5], l[6], l[0], l[1]]
+    l2 = [l[4], l[5], l[6], l[0], l[1]] 
 elif jour_actuel == 'Saturday':
     l2 = [l[5], l[6], l[0], l[1], l[2]]
 else:
