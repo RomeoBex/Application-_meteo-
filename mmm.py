@@ -27,3 +27,18 @@ else:
 print(hourly_temperature)
 
 temp_actu_J1=
+#%%
+#Ici on va essayer de changer les jours de la semaine sur ma page web en foncion de l'heure 
+
+#obtention du nom du jour de la semaine:
+j1=datetime.date.today()
+jour1_semaine = j1.strftime("%A")
+j2 = date_actuelle + datetime.timedelta(days=1)
+jour2_semaine= j2.strftime("%A")
+j3 = date_actuelle + datetime.timedelta(days=2)  # Ajoute 2 jours pour obtenir le 3ème jour
+jour3_semaine = j3.strftime("%A")
+j4 = date_actuelle + datetime.timedelta(days=3)  # Ajoute 3 jours pour obtenir le 4ème jour
+jour4_semaine = j4.strftime("%A")
+
+
+# %%
