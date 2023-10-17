@@ -1,0 +1,21 @@
+name: Update Script
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Cette expression cron s'exécute tous les jours à minuit
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Run Python script
+      run: python mmm.py
