@@ -47,15 +47,15 @@
             font-weight: bold;
         }
 
-        .carte-image {
+	 .carte-image {
             position: absolute;
             bottom: 20px;
             right: 20px;
             width: 200px; /* Ajustez la largeur selon vos besoins */
             opacity: 0.8; /* Réglez l'opacité (0.0 - 1.0) */
-        }
+	}
     </style>
-    
+    <script>
         // JavaScript pour actualiser les jours de la semaine
         document.addEventListener("DOMContentLoaded", function() {
             // Récupérer les éléments h2 correspondant aux jours de la semaine
@@ -74,22 +74,6 @@
             for (let i = 0; i < days.length; i++) {
                 days[i].textContent = daysOfWeek[(currentDay + i) % 7];
             }
-
-            // JavaScript pour récupérer les données météo pour les jours de la semaine
-            fetch('https://api.open-meteo.com/v1/forecast?latitude=43.6109&longitude=3.8763&daily=temperature_2m')
-                .then(response => response.json())
-                .then(data => {
-                    // Obtenez les données météo pour les jours de la semaine.
-                    const dailyData = data.daily.temperature_2m;
-
-                    // Mettez à jour les éléments HTML correspondants avec les données météo.
-                    for (let i = 0; i < dailyData.length; i++) {
-                        const temperature = dailyData[i];
-                        const temperatureElement = document.querySelectorAll('.weather-day p:nth-child(1)')[i];
-                        temperatureElement.textContent = `Température actuelle: ${temperature}°C`;
-                    }
-                })
-                .catch(error => console.error('Erreur lors de la récupération des données météo :', error));
         });
     </script>
 </head>
@@ -111,33 +95,42 @@
 
         <div class="weather-day">
             <h2>{mercredi}</h2>
-            <p><strong>Température actuelle:</strong> 25°C</p>
-            <p><strong>Température Maximale:</strong> 60%</p>
-            <p><strong>Température Minimale:</strong> 1013 hPa</p>
-            <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
-            <p><strong>Direction du Vent:</strong> Nord</p>
-            <p><strong>Précipitations :</strong> 90%
+   		<p><strong>Température actuelle:</strong> 25°C</p>
+            	<p><strong>Température Maximale:</strong> 60%</p>
+            	<p><strong>Température Minimale:</strong> 1013 hPa</p>
+            	<p><strong>Vitesse du Vent:</strong> 10 km/h</p>
+            	<p><strong>Direction du Vent:</strong> Nord</p>
+		<p><strong>Précipitations :</strong> 90%
         </div>
 
         <div class="weather-day">
             <h2>{jeudi}</h2>
-            <p><strong>Température actuelle:</strong> 25°C</p>
-            <p><strong>Température Maximale:</strong> 60%</p>
-            <p><strong>Température Minimale:</strong> 1013 hPa</p>
-            <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
-            <p><strong>Direction du Vent:</strong> Nord</p>
-            <p><strong>Précipitations :</strong> 0%
+     		<p><strong>Température actuelle:</strong> 25°C</p>
+            	<p><strong>Température Maximale:</strong> 60%</p>
+            	<p><strong>Température Minimale:</strong> 1013 hPa</p>
+            	<p><strong>Vitesse du Vent:</strong> 10 km/h</p>
+            	<p><strong>Direction du Vent:</strong> Nord</p>
+                <p><strong>Précipitations :</strong> 0%
         </div>
 
-  
         <div class="weather-day">
-            <h2>{{Vendredi}}</h2>
-            <p><strong>Température actuelle:</strong> 25°C</p>
+            <h2>{{Jeudi}}</h2>
+             <p><strong>Température Moyenne:</strong> 25°C</p>
             <p><strong>Température Maximale:</strong> 60%</p>
             <p><strong>Température Minimale:</strong> 1013 hPa</p>
             <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
             <p><strong>Direction du Vent:</strong> Nord</p>
-            <p><strong>Précipitations :</strong> 20%
+	    <p><strong>Précipitations :</strong> 90%
+        </div>
+
+        <div class="weather-day">
+            <h2>{{Vendredi}}</h2>
+             <p><strong>Température Moyenne:</strong> 25°C</p>
+            <p><strong>Température Maximale:</strong> 60%</p>
+            <p><strong>Température Minimale:</strong> 1013 hPa</p>
+            <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
+            <p><strong>Direction du Vent:</strong> Nord</p>
+	    <p><strong>Précipitations :</strong> 20%
         </div>
     </div>
 
