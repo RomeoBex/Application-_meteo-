@@ -9,11 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
-          ref: main # Remplacez "main" par votre branche principale si nécessaire
 
       - name: Push Python File
         run: |
