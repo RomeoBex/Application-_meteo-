@@ -55,7 +55,7 @@
             opacity: 0.8; /* Réglez l'opacité (0.0 - 1.0) */
         }
     </style>
-    <script>
+    
         // JavaScript pour actualiser les jours de la semaine
         document.addEventListener("DOMContentLoaded", function() {
             // Récupérer les éléments h2 correspondant aux jours de la semaine
@@ -75,18 +75,21 @@
                 days[i].textContent = daysOfWeek[(currentDay + i) % 7];
             }
 
-            // JavaScript pour récupérer la température actuelle depuis l'API Open Meteo
-            fetch('https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m')
+            // JavaScript pour récupérer les données météo pour les jours de la semaine
+            fetch('https://api.open-meteo.com/v1/forecast?latitude=43.6109&longitude=3.8763&daily=temperature_2m')
                 .then(response => response.json())
                 .then(data => {
-                    // Obtenez la température actuelle depuis les données.
-                    const temperatureActuelle = data.hourly.temperature_2m[0];
+                    // Obtenez les données météo pour les jours de la semaine.
+                    const dailyData = data.daily.temperature_2m;
 
-                    // Mettez à jour l'élément HTML correspondant avec la température actuelle.
-                    const temperatureElement = document.querySelector('.weather-day h2');
-                    temperatureElement.textContent = `Température actuelle: ${temperatureActuelle}°C`;
+                    // Mettez à jour les éléments HTML correspondants avec les données météo.
+                    for (let i = 0; i < dailyData.length; i++) {
+                        const temperature = dailyData[i];
+                        const temperatureElement = document.querySelectorAll('.weather-day p:nth-child(1)')[i];
+                        temperatureElement.textContent = `Température actuelle: ${temperature}°C`;
+                    }
                 })
-                .catch(error => console.error('Erreur lors de la récupération de la température actuelle :', error));
+                .catch(error => console.error('Erreur lors de la récupération des données météo :', error));
         });
     </script>
 </head>
