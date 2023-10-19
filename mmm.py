@@ -26,9 +26,12 @@ else:
 #A la fin de ce code on obtient une liste comptenant toutes la température h par h des 4jours de la semaine
 print(hourly_temperature)
 
-temp_actu_J1=
+
 #%%
 #Ici on va essayer de changer les jours de la semaine sur ma page web en foncion de l'heure 
+import datetime
+
+
 
 #obtention du nom du jour de la semaine:
 j1=datetime.date.today()

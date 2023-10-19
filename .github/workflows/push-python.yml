@@ -1,0 +1,21 @@
+name: Push Python File
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Cette expression déclenche toutes les 5 minutes
+
+jobs:
+  push_python_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Push Python File
+        run: |
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
+          git add provisoire.py
+          git commit -m "Auto-commit: Push provisoire.py"
+          git push
