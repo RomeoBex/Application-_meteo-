@@ -55,7 +55,7 @@
             opacity: 0.8; /* Réglez l'opacité (0.0 - 1.0) */
 	}
     </style>
-    <script>
+   <script>
         // JavaScript pour actualiser les jours de la semaine
         document.addEventListener("DOMContentLoaded", function() {
             // Récupérer les éléments h2 correspondant aux jours de la semaine
@@ -75,7 +75,23 @@
                 days[i].textContent = daysOfWeek[(currentDay + i) % 7];
             }
         });
+
+        // JavaScript pour récupérer la température actuelle depuis l'API Open Meteo
+        document.addEventListener("DOMContentLoaded", function() {
+            // Utilisez l'API Fetch pour récupérer la température actuelle depuis l'API Open Meteo.
+            fetch('https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m')
+                .then(response => response.json())
+                .then(data => {
+                    // Obtenez la température actuelle depuis les données.
+                    const temperatureActuelle = data.hourly.temperature_2m[0];
+
+                    // Mettez à jour l'élément HTML correspondant avec la température actuelle.
+                    document.querySelector('.weather-day p:nth-child(1)').textContent = `Température actuelle: ${temperatureActuelle}°C`;
+                })
+                .catch(error => console.error('Erreur lors de la récupération de la température actuelle :', error));
+        });
     </script>
+</head>
 </head>
 
 <body>
@@ -115,7 +131,7 @@
 
         <div class="weather-day">
             <h2>{{Jeudi}}</h2>
-             <p><strong>Température Moyenne:</strong> 25°C</p>
+             <p><strong>Température actuelle:</strong> 25°C</p>
             <p><strong>Température Maximale:</strong> 60%</p>
             <p><strong>Température Minimale:</strong> 1013 hPa</p>
             <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
@@ -125,7 +141,7 @@
 
         <div class="weather-day">
             <h2>{{Vendredi}}</h2>
-             <p><strong>Température Moyenne:</strong> 25°C</p>
+             <p><strong>Température actuelle:</strong> 25°C</p>
             <p><strong>Température Maximale:</strong> 60%</p>
             <p><strong>Température Minimale:</strong> 1013 hPa</p>
             <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
