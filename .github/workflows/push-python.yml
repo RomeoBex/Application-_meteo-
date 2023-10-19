@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          ref: main # Remplacez "main" par votre branche principale si nécessaire
 
       - name: Push Python File
         run: |
