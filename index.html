@@ -56,24 +56,40 @@
 	}
     </style>
     <script>
-        // JavaScript pour actualiser les jours de la semaine
+        // Fonction pour effectuer une requête HTTP GET asynchrone
+        function fetchTemperature(url, dayElement) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Récupérer la température actuelle en fonction de l'heure
+                    const currentHour = new Date().getHours();
+                    const currentTemperature = data.hourly[currentHour].temperature_2m;
+
+                    // Mettre à jour l'élément HTML avec la température
+                    dayElement.querySelector('p.temp-actuelle').textContent = `<strong>Température actuelle:</strong> ${currentTemperature}°C`;
+                })
+                .catch(error => console.error(error));
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
-            // Récupérer les éléments h2 correspondant aux jours de la semaine
-            const days = document.querySelectorAll('.weather-day h2');
+            // Récupérer les éléments correspondant aux jours de la semaine
+            const days = document.querySelectorAll('.weather-day');
 
             // Obtenir la date actuelle
             const currentDate = new Date();
 
-            // Obtenir le jour de la semaine en tant que nombre (0 = Dimanche, 1 = Lundi, etc.)
+            // Obtenir la jour de la semaine en tant que nombre (0 = Dimanche, 1 = Lundi, etc.)
             const currentDay = currentDate.getDay();
 
-            // Définir les noms des jours de la semaine
-            const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+            // URL de l'API
+            const apiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m";
 
-            // Actualiser les titres des éléments h2
-            for (let i = 0; i < days.length; i++) {
-                days[i].textContent = daysOfWeek[(currentDay + i) % 7];
-            }
+            // Actualiser les éléments HTML avec les températures actuelles
+            days.forEach((day, index) => {
+                const dayElement = days[index];
+                const url = `${apiUrl}&date=${index}`;
+                fetchTemperature(url, dayElement);
+            });
         });
     </script>
 </head>
@@ -84,6 +100,7 @@
     <div class="weather-days">
         <div class="weather-day">
             <h2>{mardi}</h2>
+	    <p class="temp-actuelle">Chargement...</p>
             <p><strong>Température actuelle:</strong> 25°C</p>
             <p><strong>Température Maximale:</strong> 60%</p>
             <p><strong>Température Minimale:</strong> 1013 hPa</p>
