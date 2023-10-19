@@ -76,9 +76,7 @@
             }
         });
 
-        // JavaScript pour récupérer la température actuelle depuis l'API Open Meteo
-        document.addEventListener("DOMContentLoaded", function() {
-            // Utilisez l'API Fetch pour récupérer la température actuelle depuis l'API Open Meteo.
+       // JavaScript pour récupérer la température actuelle depuis l'API Open Meteo
             fetch('https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m')
                 .then(response => response.json())
                 .then(data => {
@@ -86,10 +84,47 @@
                     const temperatureActuelle = data.hourly.temperature_2m[0];
 
                     // Mettez à jour l'élément HTML correspondant avec la température actuelle.
-                    document.querySelector('.weather-day p:nth-child(1)').textContent = `Température actuelle: ${temperatureActuelle}°C`;
+                    const temperatureElement = document.querySelector('.weather-day h2');
+                    temperatureElement.textContent = `Température actuelle: ${temperatureActuelle}°C`;
                 })
                 .catch(error => console.error('Erreur lors de la récupération de la température actuelle :', error));
         });
+    </script>
+</head>
+
+<body>
+    <h1>Données de la Station Météo</h1>
+    
+    <div class="weather-days">
+        <div class="weather-day">
+            <h2>{mardi}</h2>
+            <p><strong>Température actuelle:</strong> 25°C</p>
+            <p><strong>Température Maximale:</strong> 60%</p>
+            <p><strong>Température Minimale:</strong> 1013 hPa</p>
+            <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
+            <p><strong>Direction du Vent:</strong> Nord</p> 
+            <p><strong>Précipitations :</strong> 90%
+     
+        </div>
+
+        <div class="weather-day">
+            <h2>{mercredi}</h2>
+            <p><strong>Température actuelle:</strong> 25°C</p>
+            <p><strong>Température Maximale:</strong> 60%</p>
+            <p><strong>Température Minimale:</strong> 1013 hPa</p>
+            <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
+            <p><strong>Direction du Vent:</strong> Nord</p>
+            <p><strong>Précipitations :</strong> 90%
+        </div>
+
+        <div class="weather-day">
+            <h2>{jeudi}</h2>
+            <p><strong>Température actuelle:</strong> 25°C</p>
+            <p><strong>Température Maximale:</strong> 60%</p>
+            <p><strong>Température Minimale:</strong> 1013 hPa</p>
+            <p><
+
+
     </script>
 </head>
 </head>
