@@ -52,9 +52,30 @@
             bottom: 20px;
             right: 20px;
             width: 200px; /* Ajustez la largeur selon vos besoins */
-            opacity: 0.7; /* Réglez l'opacité (0.0 - 1.0) */
+            opacity: 0.8; /* Réglez l'opacité (0.0 - 1.0) */
 	}
     </style>
+    <script>
+        // JavaScript pour actualiser les jours de la semaine
+        document.addEventListener("DOMContentLoaded", function() {
+            // Récupérer les éléments h2 correspondant aux jours de la semaine
+            const days = document.querySelectorAll('.weather-day h2');
+
+            // Obtenir la date actuelle
+            const currentDate = new Date();
+
+            // Obtenir le jour de la semaine en tant que nombre (0 = Dimanche, 1 = Lundi, etc.)
+            const currentDay = currentDate.getDay();
+
+            // Définir les noms des jours de la semaine
+            const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+
+            // Actualiser les titres des éléments h2
+            for (let i = 0; i < days.length; i++) {
+                days[i].textContent = daysOfWeek[(currentDay + i) % 7];
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -62,7 +83,7 @@
     
     <div class="weather-days">
         <div class="weather-day">
-            <h2>{{jour1_semaine}}</h2>
+            <h2>{mardi}</h2>
             <p><strong>Température actuelle:</strong> 25°C</p>
             <p><strong>Température Maximale:</strong> 60%</p>
             <p><strong>Température Minimale:</strong> 1013 hPa</p>
@@ -73,7 +94,7 @@
         </div>
 
         <div class="weather-day">
-            <h2>{{jour2_semaine}}</h2>
+            <h2>{mercredi}</h2>
    		<p><strong>Température actuelle:</strong> 25°C</p>
             	<p><strong>Température Maximale:</strong> 60%</p>
             	<p><strong>Température Minimale:</strong> 1013 hPa</p>
@@ -83,7 +104,7 @@
         </div>
 
         <div class="weather-day">
-            <h2>{{jour3_semaine}}</h2>
+            <h2>{jeudi}</h2>
      		<p><strong>Température actuelle:</strong> 25°C</p>
             	<p><strong>Température Maximale:</strong> 60%</p>
             	<p><strong>Température Minimale:</strong> 1013 hPa</p>
@@ -93,7 +114,7 @@
         </div>
 
         <div class="weather-day">
-            <h2>{{jour4_semaine}}</h2>
+            <h2>{{Jeudi}}</h2>
              <p><strong>Température Moyenne:</strong> 25°C</p>
             <p><strong>Température Maximale:</strong> 60%</p>
             <p><strong>Température Minimale:</strong> 1013 hPa</p>
@@ -103,7 +124,7 @@
         </div>
 
         <div class="weather-day">
-            <h2>{{jour5_semaine}}</h2>
+            <h2>{{Vendredi}}</h2>
              <p><strong>Température Moyenne:</strong> 25°C</p>
             <p><strong>Température Maximale:</strong> 60%</p>
             <p><strong>Température Minimale:</strong> 1013 hPa</p>
