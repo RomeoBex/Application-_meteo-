@@ -60,41 +60,40 @@
         document.addEventListener("DOMContentLoaded", function() {
             // Récupérer les éléments h2 correspondant aux jours de la semaine
             const days = document.querySelectorAll('.weather-day h2');
-
+    
             // Obtenir la date actuelle
             const currentDate = new Date();
-
+    
             // Obtenir le jour de la semaine en tant que nombre (0 = Dimanche, 1 = Lundi, etc.)
             const currentDay = currentDate.getDay();
-
+    
             // Définir les noms des jours de la semaine
             const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-
+    
             // Actualiser les titres des éléments h2
             for (let i = 0; i < days.length; i++) {
                 days[i].textContent = daysOfWeek[(currentDay + i) % 7];
             }
         });
-
-
-
- <script>
+    </script>
+    
+    <script>
         // Définir les variables Python (simulées)
         var pythonTemperature = [15.3, 16.5, 17.2, 18.8];
         var pythonPrecipitation = [0.0, 0.2, 0.5, 0.8];
         var pythonWindspeed = [3.7, 4.2, 4.9, 5.5];
-
+    
         // Convertir les variables Python en chaînes JSON
         var temperatureData = JSON.stringify(pythonTemperature);
         var precipitationData = JSON.stringify(pythonPrecipitation);
         var windspeedData = JSON.stringify(pythonWindspeed);
-
+    
         // Stocker les variables Python dans des balises HTML
         document.getElementById("temperature").textContent = "Température : " + temperatureData;
         document.getElementById("precipitation").textContent = "Précipitation : " + precipitationData;
         document.getElementById("windspeed").textContent = "Vitesse du vent : " + windspeedData;
     </script>
-    </script>
+    
 </head>
 
 <body>
