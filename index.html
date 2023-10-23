@@ -97,6 +97,9 @@
        // Afficher la température actuelle en fonction de l'heure pour chaque jour
         document.getElementById("current-temperature-lundi").textContent = `Température actuelle : ${pythonTemperature[currentHour]}°C`;
         document.getElementById("current-temperature-mardi").textContent = `Température actuelle : ${pythonTemperature[currentHour]}°C`;
+
+        document.getElementById("temperature3").textContent = `Température à l'index 3 : ${pythonTemperature[3]}°C`;
+
     });
 </script>
    
@@ -114,8 +117,11 @@
     <div class="weather-days">
         <div class="weather-day">
             <h2>{mardi}</h2>
-            
-            <p id="current-temperature"></p> <!-- Ajout de cette balise pour la température actuelle -->
+            <p id="temperature"></p> <!-- Cette balise affiche les données de température simulées -->
+            <p id="precipitation"></p>
+            <p id="current-temperature"></p> <!-- Cette balise affiche la température actuelle pour l'heure actuelle -->
+            <p id="temperature3"></p> <!-- Ajout de cette balise pour afficher temperature[3] -->
+</div>
      
         </div>
 
