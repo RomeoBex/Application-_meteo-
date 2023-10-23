@@ -92,11 +92,6 @@
 
         // Récupérer l'heure actuelle
         const currentHour = currentDate.getHours();
-
-        // Afficher la température actuelle en fonction de l'heure
-       // Afficher la température actuelle en fonction de l'heure pour chaque jour
-        document.getElementById("temperature").textContent = `Température actuelle : ${pythonTemperature[0]}°C`;
-        document.getElementById("current-temperature-mardi").textContent = `Température actuelle : ${pythonTemperature[currentHour]}°C`;
         
 
     });
@@ -109,11 +104,12 @@
     
 
     <div class="weather-days"> 
-        <div class="weather-day">
-            <h2>{mardi}</h2>
-            <p id="temperature"></p> <!-- Cette balise affiche les données de température simulées -->
-            <p id="precipitation"></p>
-            <p id="current-temperature"></p> <!-- Cette balise affiche la température actuelle pour l'heure actuelle -->
+            <p><strong>Température Moyenne:</strong> 25°C</p>
+            <p><strong>Température Maximale:</strong> 60%</p>
+            <p><strong>Température Minimale:</strong> 1013 hPa</p>
+            <p><strong>Vitesse du Vent:</strong> 10 km/h</p>
+            <p><strong>Direction du Vent:</strong> Nord</p>
+            <p><strong>Précipitations :</strong> 90%
             
         </div>
      
