@@ -1,0 +1,52 @@
+/* css styles */
+body {
+    background-image: linear-gradient(rgba(251, 253, 253, 0.4), rgba(255, 255, 255, 0)),url('sky-blue.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: rgba(242, 242, 242, 0.7); /* Couleur de secours avec opacité (0.7) en cas d'échec du chargement de l'image */
+}
+
+.carte-image {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 250px; /* Ajustez la largeur selon vos besoins */
+    opacity: 0.85; /* Réglez l'opacité (0.0 - 1.0) */
+    top: 750px; /* Distance par rapport au haut */
+    left: 20px; /* Distance par rapport à gauche */
+}
+
+
+.weather-info {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.weather-days {
+    display: flex;
+    justify-content: space-between; /* Ensures equal spacing between days */
+}
+
+.weather-day {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+strong {
+    font-weight: bold;
+}
