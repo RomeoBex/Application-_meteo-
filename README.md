@@ -7,5 +7,7 @@ L'application donnera :
 * la température maximale
 * la température minimale
 * la quantité de précipitation
+* le code météorologique 
+* la vitesse du vent 
 
 et sera disponible sur le site : https://romeobex.github.io/Application-_meteo-/
