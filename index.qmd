@@ -1,7 +1,6 @@
 ---
-title: "quartoro"
+title: "Application météo"
 ---
 
-This is a Quarto website.
+Prévisions météorologiques des 4 prochains jours : 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
