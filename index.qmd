@@ -65,7 +65,7 @@ Prévisions météorologiques des 4 prochains jours :
     </script>
 
     <footer>
-        <p>&copy; 2023 Roméo BEX Tous droits réservés.</p>
+        <p>&copy; <strong>2023 Roméo BEX Tous droits réservés.</strong></p>
     </footer>
 </body>
 
