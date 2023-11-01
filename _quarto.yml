@@ -2,11 +2,11 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "Application météo"
+  title: Météo
   navbar:
     left: 
       - href: index.qmd
-        text: Home
+        text: Acceuil
       - about.qmd
 
 format:
