@@ -135,12 +135,18 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th"><strong>Jour</strong></td>
-<td data-quarto-table-cell-role="th"><strong>Température moyenne (°C)</strong></td>
+<td data-quarto-table-cell-role="th"><strong>Température actuelle (°C)</strong></td>
+<td data-quarto-table-cell-role="th"><strong>Température maximale (°C)</strong></td>
+<td data-quarto-table-cell-role="th"><strong>Température minimale (°C)</strong></td>
 </tr>
 </tbody>
 </table>
 
 
+   
+    <footer>
+        <p>© <strong>2023 Roméo BEX Tous droits réservés.</strong></p>
+    </footer>
 
     <script>
         // Fonction pour obtenir le nom du jour de la semaine en fonction de la date
@@ -149,15 +155,14 @@ ul.task-list li input[type="checkbox"] {
             return days[day];
         }
 
-        // Fonction pour faire une requête à l'API
-        function fetchWeatherData() {
-            const apiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m";
+        // Fonction pour faire une requête à l'API de température actuelle
+        function fetchCurrentTemperature() {
+            const currentTempApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m";
 
-            fetch(apiUrl)
+            fetch(currentTempApiUrl)
                 .then(response => response.json())
                 .then(data => {
-                    // Récupérer les données de température pour les 4 prochains jours
-                    const temperatureData = data.hourly.temperature_2m.slice(0, 4);
+                    const temperatureData = data.hourly.temperature_2m;
 
                     // Sélectionner le tableau HTML
                     const table = document.querySelector("table");
@@ -167,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
                     const currentDay = currentDate.getDay();
 
                     // Boucler à travers les données et les ajouter au tableau
-                    for (let i = 0; i < temperatureData.length; i++) {
+                    for (let i = 0; i < 4; i++) { // Affiche uniquement les 4 prochains jours
                         const row = table.insertRow(-1);
                         const dayCell = row.insertCell(0);
                         const tempCell = row.insertCell(1);
@@ -180,17 +185,40 @@ ul.task-list li input[type="checkbox"] {
                         tempCell.innerHTML = `${temperatureData[i]}°C`;
                     }
                 })
-                .catch(error => console.error("Erreur lors de la récupération des données : " + error));
+                .catch(error => console.error("Erreur lors de la récupération des données de température actuelle : " + error));
         }
 
-        // Appeler la fonction pour récupérer les données
-        fetchWeatherData();
+        // Fonction pour faire une requête à l'API de température maximale et minimale
+        function fetchMaxMinTemperature() {
+            const maxMinTempApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin";
+
+            fetch(maxMinTempApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Récupérer les données de température maximale et minimale pour les 4 prochains jours
+                    const maxTempData = data.daily.temperature_2m_max.slice(0, 4);
+                    const minTempData = data.daily.temperature_2m_min.slice(0, 4);
+
+                    // Sélectionner le tableau HTML
+                    const table = document.querySelector("table");
+
+                    // Boucler à travers les données et les ajouter au tableau
+                    for (let i = 0; i < 4; i++) { // Affiche uniquement les 4 prochains jours
+                        const row = table.rows[i + 1]; // Commence à la deuxième ligne
+                        const maxTempCell = row.insertCell(2);
+                        const minTempCell = row.insertCell(3);
+
+                        maxTempCell.innerHTML = `${maxTempData[i]}°C`;
+                        minTempCell.innerHTML = `${minTempData[i]}°C`;
+                    }
+                })
+                .catch(error => console.error("Erreur lors de la récupération des données de température maximale et minimale : " + error));
+        }
+
+        // Appeler les fonctions pour récupérer les données
+        fetchCurrentTemperature();
+        fetchMaxMinTemperature();
     </script>
-
-    <footer>
-        <p>© <strong>2023 Roméo BEX Tous droits réservés.</strong></p>
-    </footer>
-
 
 
 
