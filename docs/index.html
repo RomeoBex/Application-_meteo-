@@ -127,7 +127,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-
     <title>Tableau de la météo</title>
 
 
@@ -148,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Mardi</td>
+<td id="day1">Mardi</td>
 <td>25°C</td>
 <td>28°C</td>
 <td>20°C</td>
@@ -156,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 <td>90%</td>
 </tr>
 <tr class="even">
-<td>Mercredi</td>
+<td id="day2">Mercredi</td>
 <td>26°C</td>
 <td>29°C</td>
 <td>21°C</td>
@@ -164,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 <td>80%</td>
 </tr>
 <tr class="odd">
-<td>Jeudi</td>
+<td id="day3">Jeudi</td>
 <td>27°C</td>
 <td>30°C</td>
 <td>22°C</td>
@@ -172,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 <td>70%</td>
 </tr>
 <tr class="even">
-<td>Vendredi</td>
+<td id="day4">Vendredi</td>
 <td>28°C</td>
 <td>31°C</td>
 <td>23°C</td>
@@ -183,6 +182,21 @@ ul.task-list li input[type="checkbox"] {
 </table>
 
     </div>
+
+    <script>
+        // JavaScript pour actualiser les jours de la semaine
+        document.addEventListener("DOMContentLoaded", function() {
+            const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+            const currentDate = new Date();
+            const currentDay = currentDate.getDay(); // 0 pour Dimanche, 1 pour Lundi, etc.
+
+            // Actualiser les jours de la semaine en fonction du jour actuel
+            for (let i = 1; i <= 4; i++) {
+                const dayElement = document.getElementById(`day${i}`);
+                dayElement.textContent = daysOfWeek[(currentDay + i - 1) % 7];
+            }
+        });
+    </script>
 
 
 
