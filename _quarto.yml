@@ -2,9 +2,9 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "quartoro"
+  title: "Application météo"
   navbar:
-    left:
+    left: 
       - href: index.qmd
         text: Home
       - about.qmd
