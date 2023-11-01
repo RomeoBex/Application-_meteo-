@@ -11,11 +11,10 @@ Prévisions météorologiques des 4 prochains jours :
     <title>Prévisions de température</title>
 </head>
 <body>
-    <h1>Prévisions de température pour les 4 prochains jours</h1>
     <table border="1">
         <tr>
-            <th>Jour</th>
-            <th>Température moyenne (°C)</th>
+            <th><strong>Jour</strong></th>
+            <th><strong>Température moyenne (°C)</strong></th>
         </tr>
         <!-- Les données seront remplies ici par JavaScript -->
     </table>
