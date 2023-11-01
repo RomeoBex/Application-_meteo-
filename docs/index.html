@@ -127,86 +127,70 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-    <title>Tableau de la météo</title>
+    <title>Prévisions de température</title>
 
 
-
-    <div class="weather-days">
-        
+    <h1>Prévisions de température pour les 4 prochains jours</h1>
+    
 <table data-quarto-postprocess="true" data-border="1" class="table">
-<caption>Prévisions météo</caption>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Jour</th>
-<th data-quarto-table-cell-role="th">Température actuelle (°C)</th>
-<th data-quarto-table-cell-role="th">Température maximale (°C)</th>
-<th data-quarto-table-cell-role="th">Température minimale (°C)</th>
-<th data-quarto-table-cell-role="th">Vitesse du vent (km/h)</th>
-<th data-quarto-table-cell-role="th">Précipitations (%)</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td id="day1">Mardi</td>
-<td>25°C</td>
-<td>28°C</td>
-<td>20°C</td>
-<td>10 km/h</td>
-<td>90%</td>
-</tr>
-<tr class="even">
-<td id="day2">Mercredi</td>
-<td>26°C</td>
-<td>29°C</td>
-<td>21°C</td>
-<td>12 km/h</td>
-<td>80%</td>
-</tr>
-<tr class="odd">
-<td id="day3">Jeudi</td>
-<td>27°C</td>
-<td>30°C</td>
-<td>22°C</td>
-<td>15 km/h</td>
-<td>70%</td>
-</tr>
-<tr class="even">
-<td id="day4">Vendredi</td>
-<td>28°C</td>
-<td>31°C</td>
-<td>23°C</td>
-<td>14 km/h</td>
-<td>60%</td>
+<td data-quarto-table-cell-role="th">Jour</td>
+<td data-quarto-table-cell-role="th">Température moyenne (°C)</td>
 </tr>
 </tbody>
 </table>
 
-    </div>
+
 
     <script>
-        // JavaScript pour actualiser les jours de la semaine
-        document.addEventListener("DOMContentLoaded", function() {
-            const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-            const currentDate = new Date();
-            const currentDay = currentDate.getDay(); // 0 pour Dimanche, 1 pour Lundi, etc.
+        // Fonction pour obtenir le nom du jour de la semaine en fonction de la date
+        function getDayName(day) {
+            const days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+            return days[day];
+        }
 
-            // Actualiser les jours de la semaine en fonction du jour actuel
-            for (let i = 1; i <= 4; i++) {
-                const dayElement = document.getElementById(`day${i}`);
-                dayElement.textContent = daysOfWeek[(currentDay + i - 1) % 7];
-            }
-        });
+        // Fonction pour faire une requête à l'API
+        function fetchWeatherData() {
+            const apiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m";
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Récupérer les données de température pour les 4 prochains jours
+                    const temperatureData = data.hourly.temperature_2m.slice(0, 4);
+
+                    // Sélectionner le tableau HTML
+                    const table = document.querySelector("table");
+
+                    // Obtenir le jour actuel
+                    const currentDate = new Date();
+                    const currentDay = currentDate.getDay();
+
+                    // Boucler à travers les données et les ajouter au tableau
+                    for (let i = 0; i < temperatureData.length; i++) {
+                        const row = table.insertRow(-1);
+                        const dayCell = row.insertCell(0);
+                        const tempCell = row.insertCell(1);
+
+                        // Calculer le jour de la semaine en fonction du jour actuel
+                        const dayIndex = (currentDay + i) % 7;
+                        const dayName = getDayName(dayIndex);
+
+                        dayCell.innerHTML = dayName;
+                        tempCell.innerHTML = `${temperatureData[i]}°C`;
+                    }
+                })
+                .catch(error => console.error("Erreur lors de la récupération des données : " + error));
+        }
+
+        // Appeler la fonction pour récupérer les données
+        fetchWeatherData();
     </script>
-
-
-
-
-
 
     <footer>
         <p>© 2023 Roméo BEX Tous droits réservés.</p>
     </footer>
-
 
 
 
