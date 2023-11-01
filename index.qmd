@@ -4,3 +4,75 @@ title: "Application météo"
 
 Prévisions météorologiques des 4 prochains jours : 
 
+```{=html}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tableau de la météo</title>
+</head>
+<body>
+
+    <div class="weather-days">
+        <table border="1">
+            <caption>Prévisions météo</caption>
+            <thead>
+                <tr>
+                    <th>Jour</th>
+                    <th>Température actuelle (°C)</th>
+                    <th>Température maximale (°C)</th>
+                    <th>Température minimale (°C)</th>
+                    <th>Vitesse du vent (km/h)</th>
+                    <th>Précipitations (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mardi</td>
+                    <td>25°C</td>
+                    <td>28°C</td>
+                    <td>20°C</td>
+                    <td>10 km/h</td>
+                    <td>90%</td>
+                </tr>
+                <tr>
+                    <td>Mercredi</td>
+                    <td>26°C</td>
+                    <td>29°C</td>
+                    <td>21°C</td>
+                    <td>12 km/h</td>
+                    <td>80%</td>
+                </tr>
+                <tr>
+                    <td>Jeudi</td>
+                    <td>27°C</td>
+                    <td>30°C</td>
+                    <td>22°C</td>
+                    <td>15 km/h</td>
+                    <td>70%</td>
+                </tr>
+                <tr>
+                    <td>Vendredi</td>
+                    <td>28°C</td>
+                    <td>31°C</td>
+                    <td>23°C</td>
+                    <td>14 km/h</td>
+                    <td>60%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
+
+
+    <footer>
+        <p>&copy; 2023 Roméo BEX Tous droits réservés.</p>
+    </footer>
+
+
+</body>
+</html>
+
+``` 
