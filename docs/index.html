@@ -127,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-    <title>Prévisions de température</title>
+    <title>Prévisions de température et précipitations</title>
 
 
     
@@ -138,12 +138,13 @@ ul.task-list li input[type="checkbox"] {
 <td data-quarto-table-cell-role="th"><strong>Température actuelle (°C)</strong></td>
 <td data-quarto-table-cell-role="th"><strong>Température maximale (°C)</strong></td>
 <td data-quarto-table-cell-role="th"><strong>Température minimale (°C)</strong></td>
+<td data-quarto-table-cell-role="th"><strong>Précipitations (mm)</strong></td>
 </tr>
 </tbody>
 </table>
 
 
-   
+
     <footer>
         <p>© <strong>2023 Roméo BEX Tous droits réservés.</strong></p>
     </footer>
@@ -188,36 +189,43 @@ ul.task-list li input[type="checkbox"] {
                 .catch(error => console.error("Erreur lors de la récupération des données de température actuelle : " + error));
         }
 
-        // Fonction pour faire une requête à l'API de température maximale et minimale
-        function fetchMaxMinTemperature() {
-            const maxMinTempApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin";
+        // Fonction pour faire une requête à l'API de température maximale et minimale et précipitations
+        function fetchMaxMinTemperatureAndPrecipitations() {
+            const maxMinTempApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&daily=temperature_2m_max,temperature_2m_min&hourly=precipitation&timezone=Europe%2FBerlin";
 
-            fetch(maxMinTempApiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // Récupérer les données de température maximale et minimale pour les 4 prochains jours
-                    const maxTempData = data.daily.temperature_2m_max.slice(0, 4);
-                    const minTempData = data.daily.temperature_2m_min.slice(0, 4);
+           fetch(maxMinTempApiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Récupérer les données de température maximale et minimale pour les 4 prochains jours
+            const maxTempData = data.daily.temperature_2m_max.slice(0, 4);
+            const minTempData = data.daily.temperature_2m_min.slice(0, 4);
 
-                    // Sélectionner le tableau HTML
-                    const table = document.querySelector("table");
+            // Récupérer les données de précipitations pour les 4 prochains jours
+            const precipitationData = data.hourly.precipitation.slice(0, 4);
 
-                    // Boucler à travers les données et les ajouter au tableau
-                    for (let i = 0; i < 4; i++) { // Affiche uniquement les 4 prochains jours
-                        const row = table.rows[i + 1]; // Commence à la deuxième ligne
-                        const maxTempCell = row.insertCell(2);
-                        const minTempCell = row.insertCell(3);
+            // Sélectionner le tableau HTML
+            const table = document.querySelector("table");
 
-                        maxTempCell.innerHTML = `${maxTempData[i]}°C`;
-                        minTempCell.innerHTML = `${minTempData[i]}°C`;
-                    }
-                })
-                .catch(error => console.error("Erreur lors de la récupération des données de température maximale et minimale : " + error));
-        }
+            // Boucler à travers les données et les ajouter au tableau
+            for (let i = 0; i < 4; i++) { // Affiche uniquement les 4 prochains jours
+                const row = table.rows[i + 1]; // Commence à la deuxième ligne
+                const maxTempCell = row.insertCell(2);
+                const minTempCell = row.insertCell(3);
+                const precipitationCell = row.insertCell(4); // Nouvelle colonne pour les précipitations
 
-        // Appeler les fonctions pour récupérer les données
+                maxTempCell.innerHTML = `${maxTempData[i]}°C`;
+                minTempCell.innerHTML = `${minTempData[i]}°C`;
+                
+                // Afficher les données de précipitations
+                precipitationCell.innerHTML = `${precipitationData[i]} mm`;
+            }
+        })
+        .catch(error => console.error("Erreur lors de la récupération des données de température maximale, minimale et précipitations : " + error));
+}
+
+        // Appeler la fonction pour récupérer les données de température et précipitations
         fetchCurrentTemperature();
-        fetchMaxMinTemperature();
+        fetchMaxMinTemperatureAndPrecipitations();
     </script>
 
 
