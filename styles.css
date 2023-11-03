@@ -12,7 +12,7 @@ body::before {
     opacity: 0.7; /* Réglez l'opacité de l'image ici (0.0 à 1.0) */
     z-index: -1;
 }
-
+ 
 body{
     content: "";
     background-image: url('carte.jpg');
