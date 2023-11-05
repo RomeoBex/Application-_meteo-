@@ -16,7 +16,7 @@ Prévisions météorologiques des 4 prochains jours :
     <table border="1">
         <tr>
             <th><strong>Jour</strong></th>
-            <th><strong>Température actuelle (°C)</strong></th>
+            <th><strong>Température moyenne (°C)</strong></th>
             <th><strong>Température maximale (°C)</strong></th>
             <th><strong>Température minimale (°C)</strong></th>
             <th><strong>Précipitations (mm)</strong></th>
@@ -120,6 +120,14 @@ Prévisions météorologiques des 4 prochains jours :
                 })
                 .catch(error => console.error("Erreur lors de la récupération des données de code météo : " + error));
         }
+        
+        // Actualise les données toutes les 15 minutes (en millisecondes)
+    setInterval(function() {
+        fetchCurrentTemperature();
+        fetchMaxMinTemperatureAndPrecipitations();
+        fetchWeatherCode();
+    }, 15 * 60 * 1000); // 15 minutes en millisecondes
+
 
         fetchCurrentTemperature();
         fetchMaxMinTemperatureAndPrecipitations();

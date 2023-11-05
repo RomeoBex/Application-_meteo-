@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+ <span class="menu-text">A propos</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th"><strong>Jour</strong></td>
-<td data-quarto-table-cell-role="th"><strong>Température actuelle (°C)</strong></td>
+<td data-quarto-table-cell-role="th"><strong>Température moyenne (°C)</strong></td>
 <td data-quarto-table-cell-role="th"><strong>Température maximale (°C)</strong></td>
 <td data-quarto-table-cell-role="th"><strong>Température minimale (°C)</strong></td>
 <td data-quarto-table-cell-role="th"><strong>Précipitations (mm)</strong></td>
@@ -241,6 +241,14 @@ ul.task-list li input[type="checkbox"] {
                 })
                 .catch(error => console.error("Erreur lors de la récupération des données de code météo : " + error));
         }
+        
+        // Actualise les données toutes les 15 minutes (en millisecondes)
+    setInterval(function() {
+        fetchCurrentTemperature();
+        fetchMaxMinTemperatureAndPrecipitations();
+        fetchWeatherCode();
+    }, 15 * 60 * 1000); // 15 minutes en millisecondes
+
 
         fetchCurrentTemperature();
         fetchMaxMinTemperatureAndPrecipitations();

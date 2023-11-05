@@ -1,5 +1,7 @@
 /* css styles */
 
+
+
 body::before {
     content: "";
     background-image: url('sky-blue.jpg');
@@ -25,4 +27,5 @@ body{
     opacity: 1; /* Réglez l'opacité de l'image ici (0.0 à 1.0) */
     z-index: -1;
 }
+
 

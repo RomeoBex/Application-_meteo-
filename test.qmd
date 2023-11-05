@@ -16,7 +16,7 @@ Prévisions météorologiques des 4 prochains jours :
     <table border="1">
         <tr>
             <th><strong>Jour</strong></th>
-            <th><strong>Température moyenne (°C)</strong></th>
+            <th><strong>Température actuelle (°C)</strong></th>
             <th><strong>Température maximale (°C)</strong></th>
             <th><strong>Température minimale (°C)</strong></th>
             <th><strong>Précipitations (mm)</strong></th>
@@ -120,6 +120,24 @@ Prévisions météorologiques des 4 prochains jours :
                 })
                 .catch(error => console.error("Erreur lors de la récupération des données de code météo : " + error));
         }
+         // Fonction pour insérer l'icône "icone-soleil" lorsque le code météo est 0 (Ciel dégagé)
+        function insertWeatherIcon() {
+            const table = document.querySelector("table");
+            for (let i = 0; i < 4; i++) {
+                const row = table.rows[i + 1];
+                const weatherCodeCell = row.cells[5];
+
+        if (weatherCodeCell.innerHTML === "Ciel dégagé") {
+            const iconCell = row.insertCell(6);
+            const iconImage = document.createElement("img");
+            iconImage.src = ""C:\Users\romeo\Documents\Infos\doc_python\icone-soleil.png";
+            iconImage.alt = "Ciel dégagé";
+            iconCell.appendChild(iconImage);
+        }
+    }
+}
+
+
 
         fetchCurrentTemperature();
         fetchMaxMinTemperatureAndPrecipitations();

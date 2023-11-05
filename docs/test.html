@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+ <span class="menu-text">A propos</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th"><strong>Jour</strong></td>
-<td data-quarto-table-cell-role="th"><strong>Température moyenne (°C)</strong></td>
+<td data-quarto-table-cell-role="th"><strong>Température actuelle (°C)</strong></td>
 <td data-quarto-table-cell-role="th"><strong>Température maximale (°C)</strong></td>
 <td data-quarto-table-cell-role="th"><strong>Température minimale (°C)</strong></td>
 <td data-quarto-table-cell-role="th"><strong>Précipitations (mm)</strong></td>
@@ -241,6 +241,24 @@ ul.task-list li input[type="checkbox"] {
                 })
                 .catch(error => console.error("Erreur lors de la récupération des données de code météo : " + error));
         }
+         // Fonction pour insérer l'icône "icone-soleil" lorsque le code météo est 0 (Ciel dégagé)
+        function insertWeatherIcon() {
+            const table = document.querySelector("table");
+            for (let i = 0; i < 4; i++) {
+                const row = table.rows[i + 1];
+                const weatherCodeCell = row.cells[5];
+
+        if (weatherCodeCell.innerHTML === "Ciel dégagé") {
+            const iconCell = row.insertCell(6);
+            const iconImage = document.createElement("img");
+            iconImage.src = ""C:\Users\romeo\Documents\Infos\doc_python\icone-soleil.png";
+            iconImage.alt = "Ciel dégagé";
+            iconCell.appendChild(iconImage);
+        }
+    }
+}
+
+
 
         fetchCurrentTemperature();
         fetchMaxMinTemperatureAndPrecipitations();
