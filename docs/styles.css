@@ -16,7 +16,7 @@ body::before {
 body{
     content: "";
     background-image: url('carte.jpg');
-    background-size: 70%;
+    background-size: 65%;
     position: fixed;
     top: 40px;
     left: 0;

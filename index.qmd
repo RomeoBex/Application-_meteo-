@@ -19,7 +19,8 @@ Prévisions météorologiques des 4 prochains jours :
             <th><strong>Température actuelle (°C)</strong></th>
             <th><strong>Température maximale (°C)</strong></th>
             <th><strong>Température minimale (°C)</strong></th>
-            <th><strong>Précipitations (mm)</strong></th> <!-- Nouvelle colonne pour les précipitations -->
+            <th><strong>Précipitations (mm)</strong></th>
+            <th><strong>Code météo</strong></th>
         </tr>
         <!-- Les données seront remplies ici par JavaScript -->
     </table>
@@ -29,13 +30,20 @@ Prévisions météorologiques des 4 prochains jours :
     </footer>
 
     <script>
-        // Fonction pour obtenir le nom du jour de la semaine en fonction de la date
+        const weatherDescriptions = {
+            0: "Ciel dégagé",
+            1: "Ciel peu nuageux",
+            2: "Ciel partiellement nuageux",
+            51: "Pluie légère",
+            53: "Pluie modérée",
+            61: "Averses de pluie"
+        };
+
         function getDayName(day) {
             const days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
             return days[day];
         }
 
-        // Fonction pour faire une requête à l'API de température actuelle
         function fetchCurrentTemperature() {
             const currentTempApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m";
 
@@ -44,20 +52,16 @@ Prévisions météorologiques des 4 prochains jours :
                 .then(data => {
                     const temperatureData = data.hourly.temperature_2m;
 
-                    // Sélectionner le tableau HTML
                     const table = document.querySelector("table");
 
-                    // Obtenir le jour actuel
                     const currentDate = new Date();
                     const currentDay = currentDate.getDay();
 
-                    // Boucler à travers les données et les ajouter au tableau
-                    for (let i = 0; i < 4; i++) { // Affiche uniquement les 4 prochains jours
+                    for (let i = 0; i < 4; i++) {
                         const row = table.insertRow(-1);
                         const dayCell = row.insertCell(0);
                         const tempCell = row.insertCell(1);
 
-                        // Calculer le jour de la semaine en fonction du jour actuel
                         const dayIndex = (currentDay + i) % 7;
                         const dayName = getDayName(dayIndex);
 
@@ -68,45 +72,61 @@ Prévisions météorologiques des 4 prochains jours :
                 .catch(error => console.error("Erreur lors de la récupération des données de température actuelle : " + error));
         }
 
-        // Fonction pour faire une requête à l'API de température maximale et minimale et précipitations
         function fetchMaxMinTemperatureAndPrecipitations() {
             const maxMinTempApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&daily=temperature_2m_max,temperature_2m_min&hourly=precipitation&timezone=Europe%2FBerlin";
 
-           fetch(maxMinTempApiUrl)
-        .then(response => response.json())
-        .then(data => {
-            // Récupérer les données de température maximale et minimale pour les 4 prochains jours
-            const maxTempData = data.daily.temperature_2m_max.slice(0, 4);
-            const minTempData = data.daily.temperature_2m_min.slice(0, 4);
+            fetch(maxMinTempApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const maxTempData = data.daily.temperature_2m_max.slice(0, 4);
+                    const minTempData = data.daily.temperature_2m_min.slice(0, 4);
+                    const precipitationData = data.hourly.precipitation.slice(0, 4);
 
-            // Récupérer les données de précipitations pour les 4 prochains jours
-            const precipitationData = data.hourly.precipitation.slice(0, 4);
+                    const table = document.querySelector("table");
 
-            // Sélectionner le tableau HTML
-            const table = document.querySelector("table");
+                    for (let i = 0; i < 4; i++) {
+                        const row = table.rows[i + 1];
+                        const maxTempCell = row.insertCell(2);
+                        const minTempCell = row.insertCell(3);
+                        const precipitationCell = row.insertCell(4);
 
-            // Boucler à travers les données et les ajouter au tableau
-            for (let i = 0; i < 4; i++) { // Affiche uniquement les 4 prochains jours
-                const row = table.rows[i + 1]; // Commence à la deuxième ligne
-                const maxTempCell = row.insertCell(2);
-                const minTempCell = row.insertCell(3);
-                const precipitationCell = row.insertCell(4); // Nouvelle colonne pour les précipitations
+                        maxTempCell.innerHTML = `${maxTempData[i]}°C`;
+                        minTempCell.innerHTML = `${minTempData[i]}°C`;
+                        precipitationCell.innerHTML = `${precipitationData[i]} mm`;
+                    }
+                })
+                .catch(error => console.error("Erreur lors de la récupération des données de température maximale, minimale et précipitations : " + error));
+        }
 
-                maxTempCell.innerHTML = `${maxTempData[i]}°C`;
-                minTempCell.innerHTML = `${minTempData[i]}°C`;
-                
-                // Afficher les données de précipitations
-                precipitationCell.innerHTML = `${precipitationData[i]} mm`;
-            }
-        })
-        .catch(error => console.error("Erreur lors de la récupération des données de température maximale, minimale et précipitations : " + error));
-}
+        function fetchWeatherCode() {
+            const weatherCodeApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=weathercode&timezone=Europe%2FBerlin";
 
-        // Appeler la fonction pour récupérer les données de température et précipitations
+            fetch(weatherCodeApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherCodeData = data.hourly.weathercode.slice(0, 4);
+
+                    const table = document.querySelector("table");
+
+                    for (let i = 0; i < 4; i++) {
+                        const row = table.rows[i + 1];
+                        const weatherCodeCell = row.insertCell(5);
+
+                        const code = weatherCodeData[i];
+                        const description = weatherDescriptions[code] || "Inconnu";
+
+                        weatherCodeCell.innerHTML = description;
+                    }
+                })
+                .catch(error => console.error("Erreur lors de la récupération des données de code météo : " + error));
+        }
+
         fetchCurrentTemperature();
         fetchMaxMinTemperatureAndPrecipitations();
+        fetchWeatherCode();
     </script>
 </body>
 </html>
+
 
 ``` 
