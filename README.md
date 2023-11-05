@@ -1,5 +1,7 @@
 # Application Météo
-          Ce projet est une application météo qui affiche les prévisions météorologiques des 4 prochains jours comprenant la température moyenne, la température maximale, la température minimale, les précipitations et une description du code météo. Les données sont récupérées en utilisant des API météorologiques prises sur le site  [https://open-meteo.com/en/docs/meteofrance-api](https://open-meteo.com/en/docs/meteofrance-api) et affichées dans un tableau HTML sur une page Quarto.
+
+Ce projet est une application météo qui affiche les prévisions météorologiques des 4 prochains jours comprenant la température moyenne, la température maximale, 
+la température minimale, les précipitations et une description du code météo. Les données sont récupérées en utilisant des API météorologiques prises sur le site [https://open-meteo.com/en/docs/meteofrance-api](https://open-meteo.com/en/docs/meteofrance-api) et affichées dans un tableau HTML sur une page Quarto.
 
 ## Table des matières
 
@@ -30,6 +32,7 @@ L'application utilise des API météorologiques pour récupérer les données. V
 - API de code météo : L'application utilise l'API Open Meteo pour récupérer les codes météo. Vérifiez les coordonnées dans la fonction `fetchWeatherCode`.
 
 - Ce code ajouté à mon script JavaScript fera en sorte que les données météorologiques soient récupérées et mises à jour automatiquement toutes les 15 minutes une fois que la page est chargée. 
+
 ```java
 // Actualise les données toutes les 15 minutes (en millisecondes)
 setInterval(function() {
