@@ -1,0 +1,132 @@
+---
+title: "Application météo"
+---
+
+Prévisions météorologiques des 4 prochains jours : 
+
+
+
+```{=html}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prévisions de température et précipitations</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th><strong>Jour</strong></th>
+            <th><strong>Température moyenne (°C)</strong></th>
+            <th><strong>Température maximale (°C)</strong></th>
+            <th><strong>Température minimale (°C)</strong></th>
+            <th><strong>Précipitations (mm)</strong></th>
+            <th><strong>Code météo</strong></th>
+        </tr>
+        <!-- Les données seront remplies ici par JavaScript -->
+    </table>
+
+    <footer>
+        <p>&copy; <strong>2023 Roméo BEX Tous droits réservés.</strong></p>
+    </footer>
+
+    <script>
+        const weatherDescriptions = {
+            0: "Ciel dégagé",
+            1: "Ciel peu nuageux",
+            2: "Ciel partiellement nuageux",
+            51: "Pluie légère",
+            53: "Pluie modérée",
+            61: "Averses de pluie"
+        };
+
+        function getDayName(day) {
+            const days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+            return days[day];
+        }
+
+        function fetchCurrentTemperature() {
+            const currentTempApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=temperature_2m";
+
+            fetch(currentTempApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const temperatureData = data.hourly.temperature_2m;
+
+                    const table = document.querySelector("table");
+
+                    const currentDate = new Date();
+                    const currentDay = currentDate.getDay();
+
+                    for (let i = 0; i < 4; i++) {
+                        const row = table.insertRow(-1);
+                        const dayCell = row.insertCell(0);
+                        const tempCell = row.insertCell(1);
+
+                        const dayIndex = (currentDay + i) % 7;
+                        const dayName = getDayName(dayIndex);
+
+                        dayCell.innerHTML = dayName;
+                        tempCell.innerHTML = `${temperatureData[i]}°C`;
+                    }
+                })
+                .catch(error => console.error("Erreur lors de la récupération des données de température actuelle : " + error));
+        }
+
+        function fetchMaxMinTemperatureAndPrecipitations() {
+            const maxMinTempApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&daily=temperature_2m_max,temperature_2m_min&hourly=precipitation&timezone=Europe%2FBerlin";
+
+            fetch(maxMinTempApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const maxTempData = data.daily.temperature_2m_max.slice(0, 4);
+                    const minTempData = data.daily.temperature_2m_min.slice(0, 4);
+                    const precipitationData = data.hourly.precipitation.slice(0, 4);
+
+                    const table = document.querySelector("table");
+
+                    for (let i = 0; i < 4; i++) {
+                        const row = table.rows[i + 1];
+                        const maxTempCell = row.insertCell(2);
+                        const minTempCell = row.insertCell(3);
+                        const precipitationCell = row.insertCell(4);
+
+                        maxTempCell.innerHTML = `${maxTempData[i]}°C`;
+                        minTempCell.innerHTML = `${minTempData[i]}°C`;
+                        precipitationCell.innerHTML = `${precipitationData[i]} mm`;
+                    }
+                })
+                .catch(error => console.error("Erreur lors de la récupération des données de température maximale, minimale et précipitations : " + error));
+        }
+
+        function fetchWeatherCode() {
+            const weatherCodeApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=weathercode&timezone=Europe%2FBerlin";
+
+            fetch(weatherCodeApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherCodeData = data.hourly.weathercode.slice(0, 4);
+
+                    const table = document.querySelector("table");
+
+                    for (let i = 0; i < 4; i++) {
+                        const row = table.rows[i + 1];
+                        const weatherCodeCell = row.insertCell(5);
+
+                        const code = weatherCodeData[i];
+                        const description = weatherDescriptions[code] || "Inconnu";
+
+                        weatherCodeCell.innerHTML = description;
+                    }
+                })
+                .catch(error => console.error("Erreur lors de la récupération des données de code météo : " + error));
+        }
+
+        fetchCurrentTemperature();
+        fetchMaxMinTemperatureAndPrecipitations();
+        fetchWeatherCode();
+    </script>
+</body>
+</html>
+
+
+``` 
