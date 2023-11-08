@@ -240,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
                 const description = weatherDescriptions[code] || "Inconnu";
 
                 weatherCodeCell.innerHTML = description;
-                windSpeedCell.innerHTML = `${(windSpeedData[i] * 3.6).toFixed(2)}`;
+                windSpeedCell.innerHTML = `${Math.floor(windSpeedData[i] * 3.6)}`;
             }
         })
         .catch(error => console.error("Erreur lors de la récupération des données de code météo et vitesse du vent : " + error));
