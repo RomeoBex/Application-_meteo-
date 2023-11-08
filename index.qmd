@@ -21,6 +21,8 @@ Prévisions météorologiques des 4 prochains jours :
             <th><strong>Température minimale (°C)</strong></th>
             <th><strong>Précipitations (mm)</strong></th>
             <th><strong>Code météo</strong></th>
+            <th><strong>Vitesse du Vent (km/h)</strong></th>
+
         </tr>
         <!-- Les données seront remplies ici par JavaScript -->
     </table>
@@ -99,27 +101,31 @@ Prévisions météorologiques des 4 prochains jours :
         }
 
         function fetchWeatherCode() {
-            const weatherCodeApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=weathercode&timezone=Europe%2FBerlin";
+    const weatherCodeApiUrl = "https://api.open-meteo.com/v1/meteofrance?latitude=43.6109&longitude=3.8763&hourly=weathercode,windspeed_10m&timezone=Europe%2FBerlin";
 
-            fetch(weatherCodeApiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const weatherCodeData = data.hourly.weathercode.slice(0, 4);
+    fetch(weatherCodeApiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const weatherCodeData = data.hourly.weathercode.slice(0, 4);
+            const windSpeedData = data.hourly.windspeed_10m.slice(0, 4);
 
-                    const table = document.querySelector("table");
+            const table = document.querySelector("table");
 
-                    for (let i = 0; i < 4; i++) {
-                        const row = table.rows[i + 1];
-                        const weatherCodeCell = row.insertCell(5);
+            for (let i = 0; i < 4; i++) {
+                const row = table.rows[i + 1];
+                const weatherCodeCell = row.insertCell(5);
+                const windSpeedCell = row.insertCell(6);
 
-                        const code = weatherCodeData[i];
-                        const description = weatherDescriptions[code] || "Inconnu";
+                const code = weatherCodeData[i];
+                const description = weatherDescriptions[code] || "Inconnu";
 
-                        weatherCodeCell.innerHTML = description;
-                    }
-                })
-                .catch(error => console.error("Erreur lors de la récupération des données de code météo : " + error));
-        }
+                weatherCodeCell.innerHTML = description;
+                windSpeedCell.innerHTML = `${(windSpeedData[i] * 3.6).toFixed(2)}`;
+            }
+        })
+        .catch(error => console.error("Erreur lors de la récupération des données de code météo et vitesse du vent : " + error));
+}
+
         
         // Actualise les données toutes les 15 minutes (en millisecondes)
     setInterval(function() {
