@@ -45,6 +45,4 @@ setInterval(function() {
 
 Pour utiliser cette application météo j'ai publié mon site web sur GithubPages, il suffit alors de cliquer sur l'URL du site suivant : 
 
-[romeobex.github.io/Application-_meteo-/](romeobex.github.io/Application-_meteo-/)
-
-
+romeobex.github.io/Application-_meteo-/
