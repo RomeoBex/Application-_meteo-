@@ -3,7 +3,7 @@
 ## Table des matières
 - [Aperçu](#aperçu)
 - [Configuration](#configuration)
-- [Utilisation](#utilisation)
+- [Utilisation](#utilisation) 
 
 ## Aperçu
 L'application météo est un projet simple affichant les prévisions météorologiques des 4 prochains jours, incluant la température moyenne, maximale, minimale, les précipitations et une description du code météo. Les données sont récupérées à partir de l'API météorologique de MeteoFrance ([Documentation API MeteoFrance](https://open-meteo.com/en/docs/meteofrance-api)) et présentées dans un tableau HTML sur une page Quarto.
