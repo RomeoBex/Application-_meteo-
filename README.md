@@ -37,6 +37,9 @@ setInterval(function() {
     fetchWeatherCode();
 }, 15 * 60 * 1000); // 15 minutes en millisecondes
 ```
-## Site web 
 
-Voici le lien du site : <https://romeobex.github.io/Application-_meteo-/>
+
+## Site web
+
+Voici le lien du site : [Application Météo](https://romeobex.github.io/Application-_meteo-/)
+
